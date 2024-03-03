@@ -19,7 +19,8 @@ fs.readFile('test.txt', 'utf8', (err, data) => {
 const app = express();
 app.use(express.json());
 app.use(express.static("express"));// default URL for website
-app.use('/', function (req, res) {
+app.use(express.static(__dirname));
+app.use('*', function (req, res) {
     res.sendFile(path.join(__dirname + '/app.html'));
     //__dirname : It will resolve to your project folder.
 }); const server = http.createServer(app);
